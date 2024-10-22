@@ -1,10 +1,14 @@
 {
-    "default": true,
-    "MD029": {
-        "style": "one"
-    },
-    "MD013": true,
-    "MD024": false,
-    "MD034": false,
-    "no-hard-tabs": true
+  "default": true,
+  "MD029": {
+    "style": "one"
+  },
+  "MD013": true,
+  "MD024": false,
+  "MD034": false,
+  "no-hard-tabs": true,
+  "MD033": false,
+  "MD041": false,
+  "MD007": { "indent": 4 },
+  "MD010": false
 }
