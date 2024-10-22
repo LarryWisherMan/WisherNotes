@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwisher_notes=self.webpackChunkwisher_notes||[]).push([[1903],{1912:s=>{s.exports=JSON.parse('{"blogBasePath":"/WisherNotes/blog","blogTitle":"Blog","authorsListPath":"/WisherNotes/blog/authors"}')}}]);
