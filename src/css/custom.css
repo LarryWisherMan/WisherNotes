@@ -15,6 +15,8 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --image-caption-text: #666; /* Caption text color for light mode */
+  --image-caption-bg: transparent; /* Background for caption in light mode */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -27,9 +29,32 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --image-caption-text: #ccc; /* Caption text color for dark mode */
+  --image-caption-bg: transparent; /* Background for caption in dark mode */
 }
 
+/* Image styling */
 .image-with-spacing {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0; /* Adds vertical spacing above and below the image */
+  display: block; /* Ensures the image takes up the full width of its container */
+  max-width: 100%; /* Ensures that the image doesn't exceed the container's width */
+  height: auto; /* Maintains the image's aspect ratio */
+  border-radius: 8px; /* Rounds the corners of the image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+}
+
+.image-centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%; /* Adjust this value based on your design */
+}
+
+/* Image caption styling */
+.image-caption {
+  text-align: center;
+  font-size: 0.9em;
+  color: var(--image-caption-text); /* Uses the color variable for text */
+  background-color: var(--image-caption-bg); /* Uses the background variable */
+  margin-top: 8px;
 }

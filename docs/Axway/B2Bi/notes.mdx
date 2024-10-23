@@ -2,115 +2,94 @@
 
 ## Business to Business Integration
 
-- Infrastructure for connecting application data and partners
-- B2Bi Client provides the process integrations with tools such as
+- Infrastructure for connecting application data and partners.
+- **B2Bi Client** provides process integrations with tools such as:
 
   1. Integrations
-  1. Processing Flows
-  1. Mappings
-  1. Monitoring
+  2. Processing Flows
+  3. Mappings
+  4. Monitoring
 
-- B2BI Server Provides:
+- **B2BI Server** Provides:
 
-<img
-  src={require("./assets/B2Bi-Server-Flow.png").default}
-  width="491"
-  height="226"
-  alt="chat-sdk"
-  className="image-with-spacing"
-/>
+  <img
+    src={require("./assets/B2Bi-Server-Flow.png").default}
+    alt="B2Bi Server Flow"
+    className="image-with-spacing image-centered"
+  />
+  <p className="image-caption">Figure 1: B2Bi Server Flow</p>
 
 ## B2Bi Product Family
 
 <details>
-    <summary>
-        ### Activator
-        Provides Integration Services 
-    </summary>
-- Secure, scalable gateway for B2B collaboration
-- Single Server, Intergrates user interface, gateway manaagement, and monitoring into one view
-- Best suited for low volume of messages
-- Supports multiple protocols (AS2, FTP, SFTP, HTTP, HTTPS, etc.)
+  <summary><strong>Activator</strong>: Provides Integration Services</summary>
+  
+  - Secure, scalable gateway for B2B collaboration.
+  - Single server integrates user interface, gateway management, and monitoring into one view.
+  - Best suited for low volume of messages.
+  - Supports multiple protocols (AS2, FTP, SFTP, HTTP, HTTPS, etc.).
 
-<a
-  href="https://docs.axway.com/bundle/Activator_600_AdministratorsGuide_allOS_en_HTML5/page/Content/Activator/Activator_about.htm"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Axway Activator Administrator's Guide
-</a>
+[Axway Activator Administrator's Guide](https://docs.axway.com/bundle/Activator_600_AdministratorsGuide_allOS_en_HTML5/page/Content/Activator/Activator_about.htm)
 
 </details>
 
 <details>
-    <summary>
-        ### Interchange
-        Provides Communication Services
-    </summary>
+  <summary><strong>Interchange</strong>: Provides Communication Services</summary>
+  
+  - 1-4 trading nodes.
+  - Requires shared file system and external database.
+  - Used for complex gateway communication.
 
-- 1-4 trading nodes
-- requires shared file system and external database
-- Used for complex gateway communication
-
-<a
-  href="https://docs.axway.com/bundle/Interchange_512_AdministratorsGuide_allOS_en_HTML5/page/Content/Interchange_512/overview/Interchange_about.htm"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Axway Interchange Administrator's Guide
-</a>
+[Axway Interchange Administrator's Guide](https://docs.axway.com/bundle/Interchange_512_AdministratorsGuide_allOS_en_HTML5/page/Content/Interchange_512/overview/Interchange_about.htm)
 
 </details>
 
 <details>
-    <summary>
-      ### B2Bi 
-      Provides Integration and Communication Services
-    </summary>
-- 1-4 trading nodes and 1-4 processing nodes
-- UI / API node 
-- DMZ Support
-- EDI acknowlegements coordination 
-- Support numerous remote endpoints and applications
+  <summary><strong>B2Bi</strong>: Provides Integration and Communication Services</summary>
+  
+  - 1-4 trading nodes and 1-4 processing nodes.
+  - UI / API node.
+  - DMZ support.
+  - EDI acknowledgments coordination.
+  - Supports numerous remote endpoints and applications.
 
-<a
-  href="https://docs.axway.com/bundle/B2Bi_26_OperationsGuide_allOS_en_HTML5/page/Content/Operators_Guide/ops_guide_archi.htm"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Axway B2Bi Operations Guide
-</a>
+[Axway B2Bi Operations Guide](https://docs.axway.com/bundle/B2Bi_26_OperationsGuide_allOS_en_HTML5/page/Content/Operators_Guide/ops_guide_archi.htm)
 
 </details>
 
 ## Trading and Processing
 
-### Messasge Trading
+### Message Trading
 
-- Partners -> Application = Inbound Flows
-- Application -> Partners = Outbound Flows
-- Trading can invole packaging, and encrytion of messages
-- Processes involving the consumption and delivery are managed by B2Bi Trading engine
+- **Inbound Flows**: Partners → Application
+- **Outbound Flows**: Application → Partners
+- Trading can involve packaging and encryption of messages.
+- Processes involving consumption and delivery are managed by the B2Bi Trading engine.
 
 ### Message Processing
 
-- Managed by the integration engine which handles the transformation of messages between formats
-- creates and sends business level acknowlegements
-- processing can be applied to all consumed messages
+- Managed by the integration engine, which handles the transformation of messages between formats.
+- Creates and sends business-level acknowledgments.
+- Processing can be applied to all consumed messages.
 
 ## B2Bi Objects
 
-### Community objects
+### Community Objects
 
-- local way of grouping trading partners
-- defines orgs internal processes for handling messages
-- defines how Community expects to recive messages from applications and from remote partners
-- community can be assigned the role of sender or receiver in aggreement
+- Local way of grouping trading partners.
+- Defines the organization’s internal processes for handling messages.
+- Defines how the community expects to receive messages from applications and remote partners.
+- The community can be assigned the role of sender or receiver in agreements.
 
-<img
-  src={require("./assets/B2Bi-Object-Flow.png").default}
-  width="562"
-  height="359"
-  alt="B2bI Object Flow"
-  className="image-with-spacing"
-/>
+  <img
+    src={require("./assets/B2Bi-Object-Flow.png").default}
+    alt="B2Bi Object Flow"
+    className="image-with-spacing image-centered"
+  />
+
+  <p className="image-caption">Figure 2: B2Bi Object Flow</p>
+
+### Partners
+
+- Object that represents a sender or receiver.
+- Message processing definitions are called **agreements**.
