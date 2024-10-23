@@ -24,10 +24,10 @@
 <details>
   <summary><strong>Activator</strong>: Provides Integration Services</summary>
   
-  - Secure, scalable gateway for B2B collaboration.
-  - Single server integrates user interface, gateway management, and monitoring into one view.
-  - Best suited for low volume of messages.
-  - Supports multiple protocols (AS2, FTP, SFTP, HTTP, HTTPS, etc.).
+- Secure, scalable gateway for B2B collaboration.
+- Single server integrates user interface, gateway management, and monitoring into one view.
+- Best suited for low volume of messages.
+- Supports multiple protocols (AS2, FTP, SFTP, HTTP, HTTPS, etc.).
 
 [Axway Activator Administrator's Guide](https://docs.axway.com/bundle/Activator_600_AdministratorsGuide_allOS_en_HTML5/page/Content/Activator/Activator_about.htm)
 
@@ -36,9 +36,9 @@
 <details>
   <summary><strong>Interchange</strong>: Provides Communication Services</summary>
   
-  - 1-4 trading nodes.
-  - Requires shared file system and external database.
-  - Used for complex gateway communication.
+- 1-4 trading nodes.
+- Requires shared file system and external database.
+- Used for complex gateway communication.
 
 [Axway Interchange Administrator's Guide](https://docs.axway.com/bundle/Interchange_512_AdministratorsGuide_allOS_en_HTML5/page/Content/Interchange_512/overview/Interchange_about.htm)
 
@@ -47,11 +47,11 @@
 <details>
   <summary><strong>B2Bi</strong>: Provides Integration and Communication Services</summary>
   
-  - 1-4 trading nodes and 1-4 processing nodes.
-  - UI / API node.
-  - DMZ support.
-  - EDI acknowledgments coordination.
-  - Supports numerous remote endpoints and applications.
+- 1-4 trading nodes and 1-4 processing nodes.
+- UI / API node.
+- DMZ support.
+- EDI acknowledgments coordination.
+- Supports numerous remote endpoints and applications.
 
 [Axway B2Bi Operations Guide](https://docs.axway.com/bundle/B2Bi_26_OperationsGuide_allOS_en_HTML5/page/Content/Operators_Guide/ops_guide_archi.htm)
 
@@ -74,12 +74,13 @@
 
 ## B2Bi Objects
 
-### Community Objects
+### Communities
 
 - Local way of grouping trading partners.
 - Defines the organization’s internal processes for handling messages.
 - Defines how the community expects to receive messages from applications and remote partners.
 - The community can be assigned the role of sender or receiver in agreements.
+- To exchange messages, you must define a community, Trading Pickup, Partner Delivery and Partner
 
   <img
     src={require("./assets/B2Bi-Object-Flow.png").default}
@@ -93,3 +94,53 @@
 
 - Object that represents a sender or receiver.
 - Message processing definitions are called **agreements**.
+- Can exist without being associated with a community
+- Can also be associated with multiple communities.
+- Partners must belong to a community for trading to occur.
+- Partners associated with a community for message exchanges are **trading partners**.
+
+## Objects for Message Processing
+
+### Metadata Profile
+
+- Used to trigger processing based on the attributes of messages
+- messages are evaluated for metadata content and processing is applied based on the metadata profile defined.
+- meta data profiles are used to specify message processing based only on one or more metadata attributes
+
+To create and manage profiles **Processing Configuration > Manage metadata profiles**
+
+### Agreements
+
+- Used to specify how B2Bi processes information that is exchanged between two or more trading endpoints.
+- based on standards-based type of processing for X12, EDIFACT, etc.
+- Agreements are used to specify the types of documents that can be exchanged and the processing rules that apply to those documents.
+
+#### Types of Agreements
+
+Agreements define one of two types of trading exchanges
+
+1. **Inbound**
+
+   - defines characteristics of an exchange from a remote partner
+   - Settings are used to match the incoming messages based on information in the Identification tab of the inbound agreement
+   - Information in the _Document Agreements_ tab is used to define the appropriate processing
+
+1. **Outbound**
+
+   - Defines the enveloping required for sending to a remote partner
+
+#### Types of Endpoint Participant Relationships
+
+Agreements may define the endpoint participants in several ways:
+
+| Relationship Type                                | Description                                                               |
+| ------------------------------------------------ | ------------------------------------------------------------------------- |
+| **Explicit sender/receiver relationship**        | Only a specific messaging identifier for a partner or community is valid. |
+| **Implicit sender/receiver relationship**        | Any messaging identifier for a partner or community is valid.             |
+| **Semi-anonymous partner**                       | Either the sender or the receiver is undefined.                           |
+| **Fully-anonymous sender/receiver relationship** | Both trading participants (sender and receiver) are undefined.            |
+
+:::note Manage Agreements
+to view, add and manage agreements you select **Processing configuration > Manage
+agreements to open the Agreements page.**
+:::
