@@ -107,7 +107,9 @@
 - messages are evaluated for metadata content and processing is applied based on the metadata profile defined.
 - meta data profiles are used to specify message processing based only on one or more metadata attributes
 
+:::note Manage Profiles
 To create and manage profiles **Processing Configuration > Manage metadata profiles**
+:::
 
 ### Agreements
 
@@ -115,19 +117,24 @@ To create and manage profiles **Processing Configuration > Manage metadata profi
 - based on standards-based type of processing for X12, EDIFACT, etc.
 - Agreements are used to specify the types of documents that can be exchanged and the processing rules that apply to those documents.
 
+:::note Manage Agreements
+To view, add and manage agreements you select **Processing configuration > Manage
+agreements to open the Agreements page.**
+:::
+
 #### Types of Agreements
 
 Agreements define one of two types of trading exchanges
 
 1. **Inbound**
 
-   - defines characteristics of an exchange from a remote partner
+   - defines characteristics of an exchange from a application or remote partner
    - Settings are used to match the incoming messages based on information in the Identification tab of the inbound agreement
    - Information in the _Document Agreements_ tab is used to define the appropriate processing
 
 1. **Outbound**
 
-   - Defines the enveloping required for sending to a remote partner
+   - Defines the enveloping required for sending to a application or remote partner
 
 #### Types of Endpoint Participant Relationships
 
@@ -140,7 +147,68 @@ Agreements may define the endpoint participants in several ways:
 | **Semi-anonymous partner**                       | Either the sender or the receiver is undefined.                           |
 | **Fully-anonymous sender/receiver relationship** | Both trading participants (sender and receiver) are undefined.            |
 
-:::note Manage Agreements
-to view, add and manage agreements you select **Processing configuration > Manage
-agreements to open the Agreements page.**
+<br />
+
+<img
+  src={require("./assets/ComplexObjects.png").default}
+  alt="Complex Objects"
+  className="image-with-spacing image-centered"
+/>
+
+<p className="image-caption">Complex Objects flow </p>
+
+### Services
+
+- Used to specify processing sequence for handling a message exchanged between two or more partners
+- Two types of Services:
+  1. **Metadata Services** <br/>
+     Used in the context of metadata profiles
+  1. **Partner Services** <br/>
+     used in the context of agreements
+- Each component defines a step in the processing of a message
+- Can be reused in multiple agreements and by multiple metadata profiles
+
+<img
+  src={require("./assets/b2b_service_structure_453x377.png").default}
+  alt="B2Bi service structure"
+  className="image-with-spacing image-centered"
+/>
+
+<p className="image-caption">Figure 3: Service Flow</p>
+
+:::note Manage Services
+Create and manage service objects in the **Processing configuration > Manage services page.**
 :::
+
+### Components
+
+- Provides specific types of processing to a message handling flow
+- Components associates a resource with a set of parameters and message formats
+- Processing can then be used in one or more service objects to specify how a message type is handled between two or more exchange endpoints
+- Used when you want to use the functionality provided by a resource to process a message exchanged between endpoints
+
+:::note Manage Components
+create and edit components in the **Processing configuration > Manage components page.**
+:::
+
+#### Component Types
+
+| Component                 | Description                                                                                                    |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **Enveloper**             | Adds an envelope to a document or group of documents for outbound messages, including sender and receiver IDs. |
+| **Detector**              | Detects characteristics of messages in B2Bi.                                                                   |
+| **Post detection**        | Processes a message after detection but before any message processing, e.g., splitting or mapping.             |
+| **Map**                   | Transforms messages, performs data mining, and routes based on message body, header, or metadata.              |
+| **Custom Delivery**       | Used with application delivery to send messages to a database or external application.                         |
+| **Document**              | Performs regular document processing, executed after a map but before enveloping.                              |
+| **Post enveloping**       | Provides processing after the enveloping of outbound messages.                                                 |
+| **Post transfer success** | Specific post-processing after a successful transfer.                                                          |
+| **Post transfer failed**  | Specific post-processing after a failed transfer attempt.                                                      |
+
+## Basic Flows
+
+<img
+  src={require("./assets/BasicFlowSummary.png").default}
+  alt="Basic Flow Summary  "
+  className="image-with-spacing image-centered"
+/>

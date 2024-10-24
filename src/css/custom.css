@@ -58,3 +58,9 @@
   background-color: var(--image-caption-bg); /* Uses the background variable */
   margin-top: 8px;
 }
+
+table {
+  display: table;
+  width: initial;
+  margin: 0 auto;
+}
