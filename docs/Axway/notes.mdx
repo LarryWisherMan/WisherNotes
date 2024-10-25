@@ -1,5 +1,10 @@
-# What is Axway B2BI
-
+---
+title: B2Bi Overview
+description: General overview of the Axway B2Bi system
+last_update:
+  date: 10/25/2024
+  author: rcarpen
+---
 ## Business to Business Integration
 
 - Infrastructure for connecting application data and partners.
@@ -72,15 +77,27 @@
 - Creates and sends business-level acknowledgments.
 - Processing can be applied to all consumed messages.
 
+### Message Trading Sequence
+
+1. The Message is consumed
+1. The Trading Engine Decrypts the message
+1. The Integration Engine uncompresses the payload
+1. The Integration Engine processes the payload
+1. The Content is enveloped
+1. The Message is signed and Encrypted
+1. The Message is Delivered
+
 ## B2Bi Objects
 
 ### Communities
 
 - Local way of grouping trading partners.
+- Defines Trading and Security Context
 - Defines the organization’s internal processes for handling messages.
 - Defines how the community expects to receive messages from applications and remote partners.
 - The community can be assigned the role of sender or receiver in agreements.
 - To exchange messages, you must define a community, Trading Pickup, Partner Delivery and Partner
+- Stores the partners' root certificates
 
   <img
     src={require("./assets/B2Bi-Object-Flow.png").default}
@@ -93,11 +110,18 @@
 ### Partners
 
 - Object that represents a sender or receiver.
+- Can be a division of your company abroad
+- Interacts with a community using a specific protocols and standards
 - Message processing definitions are called **agreements**.
 - Can exist without being associated with a community
 - Can also be associated with multiple communities.
 - Partners must belong to a community for trading to occur.
 - Partners associated with a community for message exchanges are **trading partners**.
+
+### Trading Pickup
+
+- Defines the protocol, transport, and security settings for receiving messages
+- On This object you set the message processing mode (limited or standard)
 
 ## Objects for Message Processing
 
@@ -182,6 +206,7 @@ Create and manage service objects in the **Processing configuration > Manage ser
 
 ### Components
 
+- Each component defines a step in the processing of the message
 - Provides specific types of processing to a message handling flow
 - Components associates a resource with a set of parameters and message formats
 - Processing can then be used in one or more service objects to specify how a message type is handled between two or more exchange endpoints
@@ -191,7 +216,11 @@ Create and manage service objects in the **Processing configuration > Manage ser
 create and edit components in the **Processing configuration > Manage components page.**
 :::
 
-#### Component Types
+### Resource
+
+- A piece of message processing code residing in the integration engine 
+
+#### Resource Types
 
 | Component                 | Description                                                                                                    |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------- |
