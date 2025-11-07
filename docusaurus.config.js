@@ -1,9 +1,4 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
@@ -13,53 +8,52 @@ const config = {
   favicon: "img/favicon.ico",
   staticDirectories: ["static"],
 
-  // Set the production url of your site here
-  url: "https://github.com",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "WisherNotes",
+  // Site URL setup (for GitHub Pages)
+  url: "https://larrywisherman.github.io",
+  baseUrl: "/WisherNotes/",
   trailingSlash: false,
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "LarryWisherMan", // Usually your GitHub org/user name.
-  projectName: "WisherNotes", // Usually your repo name.
+  // GitHub Pages deployment info
+  organizationName: "LarryWisherMan",
+  projectName: "WisherNotes",
   deploymentBranch: "gh-pages",
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
   },
 
   plugins: [
+    // --- PWA plugin (you already had this) ---
     [
       "@docusaurus/plugin-pwa",
       {
         debug: true,
         offlineModeActivationStrategies: ["always", "standalone"],
         pwaHead: [
-          {
-            tagName: "link",
-            rel: "icon",
-            href: "/img/docusaurus.png",
-          },
-          {
-            tagName: "link",
-            rel: "manifest",
-            href: "/manifest.json", // your PWA manifest
-          },
+          { tagName: "link", rel: "icon", href: "/img/docusaurus.png" },
+          { tagName: "link", rel: "manifest", href: "/manifest.json" },
           {
             tagName: "meta",
             name: "theme-color",
             content: "rgb(37, 194, 160)",
           },
         ],
+      },
+    ],
+
+    // --- NEW: Playbook plugin instance ---
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "playbook", // unique ID for this docs instance
+        path: "docs-playbook", // folder where your playbook Markdown lives
+        routeBasePath: "playbook", // URL route => /playbook/
+        sidebarPath: "./sidebarsPlaybook.js", // use the new sidebar file
+        editUrl: "https://github.com/LarryWisherMan/WisherNotes/edit/main/",
       },
     ],
   ],
@@ -70,19 +64,11 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: "./sidebars.js",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          sidebarPath: "./sidebars.js", // your original Axway docs
         },
         blog: {
           showReadingTime: true,
-          feedOptions: {
-            type: ["rss", "atom"],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // Useful options to enforce blogging best practices
+          feedOptions: { type: ["rss", "atom"], xslt: true },
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
@@ -97,14 +83,10 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
         title: "WisherNotes",
-        logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
-        },
+        logo: { alt: "My Site Logo", src: "img/logo.svg" },
         items: [
           {
             type: "docSidebar",
@@ -113,16 +95,23 @@ const config = {
             label: "Axway",
           },
           {
+            type: "docSidebar",
+            sidebarId: "playbookSidebar",
+            docsPluginId: "playbook",
+            position: "left",
+            label: "Playbook",
+          },
+          {
             href: "https://github.com/LarryWisherMan/WisherNotes",
             label: "GitHub",
             position: "right",
           },
         ],
       },
-
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ["powershell", "bash", "json", "yaml", "ini"],
       },
     }),
 };
