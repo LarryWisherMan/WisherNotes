@@ -4,7 +4,7 @@
   "files.autoSaveDelay": 1000, // Autosave after 1 second of inactivity (1000ms)
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.tabSize": 2,
-  "cSpell.words": ["Axway", "EDIFACT", "uncompresses"],
+  "cSpell.words": ["Axway", "EDIFACT", "RNIF", "uncompresses"],
   "cSpell.enableFiletypes": ["markdown_latex_combined", "mdx"],
 
   "editor.quickSuggestions": {

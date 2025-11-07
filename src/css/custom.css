@@ -50,6 +50,12 @@
   width: 50%; /* Adjust this value based on your design */
 }
 
+@media (orientation: landscape) {
+  .image-centered.wide-image {
+    width: 75%; /* Increase width for wide images */
+  }
+}
+
 /* Image caption styling */
 .image-caption {
   text-align: center;

@@ -1,0 +1,151 @@
+---
+title: Message Exchange
+description: Message Exchange Process in B2Bi
+last_update:
+  date: 10/25/2024
+  author: rcarpen
+---
+
+## B2BI Trading Engine
+
+- Message consumption and delivery
+- Take place via Pushing or Pulling protocols
+- Partners and applications can initiate a Pull
+- B2Bi can initiate a push
+
+## B2Bi Integration Engine
+
+- Manages the processing and integration of messages
+- Applications -> Partners = Outbound Flows
+- Partners -> Applications = Inbound Flows
+
+## Message Processing Mode
+
+- Can configure to send messages with or with out processing
+- Limited Mode -> Only trading = Trading Engine
+- Standard Mode -> Trading and Processing = Trading and Integration Engine
+- Message processing mode is set for each Trading pickup and application pickup independently
+
+## Limited Vs Standard Mode
+
+### Limited Mode
+
+- Trading Only
+- Routing is handel via Message Handler, for applications the Delivery Settings
+- Packaging instructions are configured via the collaboration settings
+- The message handler also provides processing based on metadata and conditions
+- Limited mode restricts message parsing to EDI and XML formats.
+
+### Standard Mode
+
+- Trading and processing
+- Context and content based routing and processing
+- Access to additional pickup and delivery types provided by the integration engine
+
+<img
+  src={require("./assets/LimitedvStandardMode.png").default}
+  alt="B2Bi Server Flow"
+  className="image-with-spacing image-centered"
+/>
+<p className="image-caption"> Limited vs. Standard Mode</p>
+
+## Limited Mode Flows
+
+### Inbound Flow
+
+- Partner-Initiated scenario
+- message received from a partner needs to be sent to an application
+
+- 3 settings need to be configured:
+  1. **Trading Pickup**: How the community receives messages from the partner is defined
+  1. **Application Delivery**: How the community sends messages to the backend application
+  1. **Delivery Settings**: Used for selecting the correct application delivery for the message
+
+<img
+  src={require("./assets/Limited-ModeInboundFlow.png").default}
+  alt="Limited Mode Inbound Flow"
+  class="image-centered image-with-spacing wide-image"
+/>
+
+#### Processing Options
+
+- First option to use is message handler
+- Delivery settings and application delivery offer limited processing options
+- Routing of messages is based on the contextual information from the message
+- The message content reading is limited and only for EDI and XML formats
+- Some routing rules can be defined in message handler
+
+<img
+  src={require("./assets/Limited-ProcessingOptions.png").default}
+  alt="Limited Mode Inbound Flow"
+  class="image-with-spacing image-centered"
+/>
+
+### Outbound Flow
+
+- Application-initiated scenario
+- message received from application needs to be sent to a partner
+- 4 settings need to be configured:
+
+  1. **Application Pickup**: where you specify where the flow is in limited mode
+  1. **Partner Delivery**: defined on the partner side
+  1. **Collaboration Settings**: if the partner requests other connection settings other than default
+  1. **Trading Pickup**: for every partner delivery - a pickup must exist for the protocol. Does not need to be functional just needs to exist.
+
+<img
+  src={require("./assets/Limited-Mode_OutBoundFlow.png").default}
+  alt="Limited Mode Inbound Flow"
+  class="image-centered image-with-spacing wide-image"
+/>
+
+#### Routing Options
+
+- based on the contextual information of the message
+- hardcoded information is configured on the Application Pickup
+- Limited due to the limited messaging parsing
+- routing is based on protocol parameters, attributes or hardcoded information
+
+<img
+  src={require("./assets/AppPickup-RoutingHardCode.png").default}
+  alt="Limited Mode Inbound Flow"
+  class="image-centered image-with-spacing wide-image"
+/>
+
+<p className="image-caption"> Application Pickup & hardcoded fields</p>
+
+## Communicating with Partners
+
+- Communication takes places between Message and Transport Protocol
+- Message protocols can be used with one or many Transport Protocols:
+
+<img
+  src={require("./assets/Msg-Transport-Protocols-Table.png").default}
+  alt="Limited Mode Inbound Flow"
+  class="image-centered image-with-spacing"
+/>
+
+<p className="image-caption"> Message & Transport Protocols</p>
+
+- Message and Transport protocols are defined on the:
+  1. Trading Pickup (Community)
+  1. Partner Delivery (Partner)
+
+### Message Protocol
+
+- The type of business transaction between you and a trading partner
+- Examples:
+  - AS1
+  - AS2
+  - AS3
+  - RNIF
+
+### Transport Protocol
+
+- Communication method used with a message protocol
+- Examples:
+  - HTTP
+  - FTP
+
+
+## Configuring Trading Pickups
+
